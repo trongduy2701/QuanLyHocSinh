@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="/">Trang chủ</a>
+    <ul class="navbar-nav">
+
+        {% if current_user.is_authenticated %}
+        {% if current_user.loainguoidung.value == 1 %}
+        <li class="nav-item">
+            <a class="nav-link" href="/thongkebaocao">Thống kê báo cáo</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/thaydoiquydinh">Thay đổi quy định</a>
+        </li>
+
+        {% elif current_user.loainguoidung.value == 2 %}
+        <li class="nav-item">
+            <a class="nav-link" href="/tiepnhanhocsinh">Tiếp nhận học sinh</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/lapdanhsachlop">Lập danh sách lớp</a>
+        </li>
+
+        {% elif current_user.loainguoidung.value == 3 %}
+        <li class="nav-item">
+            <a class="nav-link" href="/nhapdiem">Nhập điểm</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/xuatdiem">Xuất điểm</a>
+        </li>
+
+        {% endif %}
+        <li class="nav-item">
+            <a class="nav-link" href="#">Xin chào {{ current_user.tennguoidung }}</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/logout">Đăng xuất</a>
+            {% else %}
+        <li class="nav-item">
+            <a class="nav-link" href="/login">Đăng nhập</a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
